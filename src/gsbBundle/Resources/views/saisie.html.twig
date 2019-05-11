@@ -1,0 +1,31 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    
+{% endblock %}
+{% block droite %}
+    <h1 id="titre">Renseigner ma fiche de frais du mois {{"now"|date('m-Y')}}</h1>
+    
+    <div id="rectangle">
+        <div id="gras">Eléments forfaitisés</div>
+{{form_start(form1)}}
+{{form_widget(form1)}}
+<br>
+<button type="submit">Valider</button>
+{{form_end(form1)}}
+
+    </div>
+<br/>
+
+<div id="rectangle">
+    <div id="gras">Nouvel élément hors forfait </div>
+{{form_start(form)}}
+{{form_widget(form)}}
+<br>
+<button type="submit">Valider</button>
+{{form_end(form)}}
+</div>
+{% endblock %}

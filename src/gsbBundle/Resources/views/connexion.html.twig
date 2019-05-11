@@ -1,0 +1,14 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block gauche %}
+  
+{% endblock %} 
+{% block droite %}
+    <h1 id="titre">Identification utilisateur</h1>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+{% endblock %}
+
+{% block droite %}
+Hors Frais Forfait
+{% include '@gsb/formulaireForfait.html.twig' %}
+
+
+{% endblock %}

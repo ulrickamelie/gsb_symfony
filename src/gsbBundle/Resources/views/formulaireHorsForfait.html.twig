@@ -1,0 +1,17 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+{% endblock %}
+
+{% block droite %}
+Frais Hors Forfait
+{{form_start(form)}}
+{{form_widget(form)}}
+<button type="submit">Valider</button>
+{{form_end(form)}}
+
+{% endblock %}

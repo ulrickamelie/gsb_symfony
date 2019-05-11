@@ -1,0 +1,56 @@
+gsb_homepage:
+    path:     /
+    defaults: { _controller: gsbBundle:Default:index }
+
+gsb_sommaire:
+    path:     /sommaire
+    defaults: { _controller: gsbBundle:Sommaire:sommaire }
+    
+gsb_connexion:
+    path:     /connexion
+    defaults: { _controller: gsbBundle:Connexion:connexion }    
+    
+gsb_deconnexion:
+    path:     /deconnexion
+    defaults: { _controller: gsbBundle:Deconnexion:deconnexion }
+    
+gsb_consultationFicheFrais:
+    path:     /consultationFicheFrais
+    defaults: { _controller: gsbBundle:Default:consulter }
+    
+gsb_saisieFicheFrais:
+    path:     /saisieFicheFrais
+    defaults: { _controller: gsbBundle:Default:createFormLigneFraisForfait }
+
+gsb_modifierFraisForfait:
+    path:     /modifierFraisForfait/{id}
+    defaults: { _controller: gsbBundle:Default:modifierFraisForfait }
+    
+gsb_modifierFraisHorsForfait:
+    path:     /modifierFraisHorsForfait/{id}
+    defaults: { _controller: gsbBundle:Default:modifierFraisHorsForfait }
+
+gsb_annulerFraisForfait:
+    path:     /consultationFicheFrais/{id}
+    defaults: { _controller: gsbBundle:Default:annulerFraisForfait }
+
+gsb_annulerFraisHorsForfait:
+    path:     /consultationsFicheFrais/{id}
+    defaults: { _controller: gsbBundle:Default:annulerFraisHorsForfait }
+
+gsb_annulerFicheFrais:
+    path:     /consultationFiche/{id}
+    defaults: { _controller: gsbBundle:Default:annulerFiche }
+
+
+gsb_consultationFicheFrais2:
+    path:     /consulte
+    defaults: { _controller: gsbBundle:Default:consulter2 }
+
+gsb_formulaireFraisHorsForfait:
+    path:     /formulaireFraisHorsForfait
+    defaults: { _controller: gsbBundle:Default:formulaireFraisHorsForfait }
+    
+gsb_formulaireFraisForfait:
+    path:     /formulaireFraisForfait
+    defaults: { _controller: gsbBundle:Default:formulaireFraisForfait }

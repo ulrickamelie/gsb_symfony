@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <link rel="stylesheet" href="{{asset('bundles/gsb/css/style.css')}}">
+        {% endblock %}
+    </head>
+    <body>
+        <section id="entete">
+        {% block header %}            
+        <div id="gauche">
+            <img src="{{asset('bundles/gsb/images/gsb.jpg')}}">
+        </div>
+        <div id="droite">
+            <h1>Suivi des remboursements</h1>
+        </div>
+        {% endblock %}
+        </section>
+        <div id="body">
+        <div id="sommaire">
+        {% block gauche %}            
+            <ul> 
+                <a href="{{ path('gsb_saisieFicheFrais') }}">Saisie fiche frais</a><br/>
+                <a href="{{ path('gsb_consultationFicheFrais') }}">Consultation fiche frais</a><br/>
+                <a href="{{ path('gsb_deconnexion') }}">Déconnexion</a><br/>
+            </ul>
+        {% endblock %}
+        </div>
+        <div id="col-droite">
+            <div id="contenu-col-droite">
+        {% block droite %}
+        {% endblock %}
+            </div>
+        </div>
+        </div>
+    </body>
+
+</html>

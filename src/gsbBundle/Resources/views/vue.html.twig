@@ -1,0 +1,25 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block droite %}
+    <h1 id="titre">Mes fiches de frais</h1>
+    Mois à sélectionner : 
+    
+      <form action="{{ path('gsb_consultationFicheFrais2')}}" method="POST"> 
+            <select name="choix" >
+      {% for fiche in fiches %} 
+                <option  values = "{{fiche.mois}}/{{fiche.annee}}">{{fiche.mois}}/{{fiche.annee}} Id:{{fiche.id}}</option>   &nbsp &nbsp &nbsp  
+                
+      {% endfor %}  
+     
+           <input type="submit" value="Ok" /> 
+   
+              
+{% endblock %}

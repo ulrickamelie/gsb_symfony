@@ -1,0 +1,101 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block droite %}
+    <h1 id='titre'>Ma fiche de frais </h1>
+    <br> 
+    {% for fiche in lesfiches %}
+    <div id="gras">Fiche de frais du mois {{fiche.mois}}-{{fiche.annee}} :</div>
+    <br>
+    Etat : {{fiche.etat.libelle}}
+    <br>
+    Eléments forfaitisés
+    {% for frais in lesFraisForfait %}
+        <table>
+            <tr>
+            <th>Frais Forfaitaires</th>
+            <th>Quantité</th>
+            <th>Montant unitaire</th>
+            <th>Total</th>
+            </tr>
+                        
+            <tr>
+            <td>Forfait Etape</td>
+            <td>{{frais.forfaitEtape}}</td>
+            <td>{{frais.fraisforfait.montantForfait}}</td>
+            <td>{{frais.forfaitEtape*frais.fraisforfait.montantForfait}}</td>
+            </tr>
+            
+            <tr>
+            <td>Frais Kilométrique</td>
+            <td>{{frais.fraisKilometrique}}</td>
+            <td>{{frais.fraisforfait.montantFraisKilometrique}}</td>
+            <td>{{frais.fraisKilometrique*frais.fraisforfait.montantFraisKilometrique}}</td>
+            </tr>
+            
+            <tr>
+            <td>Nuitée Hôtel</td>
+            <td>{{frais.nuiteeHotel}}</td>
+            <td>{{frais.fraisforfait.montantNuitee}}</td>
+            <td>{{frais.nuiteeHotel*frais.fraisforfait.montantNuitee}}</td>
+            </tr>
+            
+            <tr>
+            <td>Repas Restaurant</td>
+            <td>{{frais.repasRestaurant}}</td>
+            <td>{{frais.fraisforfait.montantRepas}}</td>
+            <td>{{frais.repasRestaurant*frais.fraisforfait.montantRepas}}</td>
+            </tr>
+        </table>
+            <br>
+            
+            <a href="{{ path('gsb_modifierFraisForfait',{'id':frais.id})}}"><button>Modifier</button></a> &nbsp &nbsp &nbsp
+            <a href="{{ path('gsb_annulerFraisForfait',{'id':frais.id})}}"><button>Supprimer</button></a> 
+   {% endfor %}  
+        <br>
+        <br>
+        <br>
+        Descriptif des éléments hors forfait - justificatifs reçus<br>
+        <table>
+           <tr>
+               <th>Date</th>
+               <th>Libellé</th>
+               <th>Montant</th>
+               <th>Modification</th>
+               <th>Annulation</th>
+           </tr>
+   {% for fh in lesHForfait %}
+           <tr>
+               <td>{{fh.date|date('d-m-Y')}}</td>
+               <td>{{fh.libelle}}</td>
+               <td>{{fh.montant}}</td>
+               <td><a href="{{ path('gsb_modifierFraisHorsForfait',{'id':fh.id})}}"><button>Modifier</button></a></td>
+               <td><a href="{{ path('gsb_annulerFraisHorsForfait',{'id':fh.id})}}"><button>Supprimer</button></a></td>
+           </tr>
+       
+            
+               
+   {%endfor %}
+        </table>
+   <br><br>
+   {% set FraisHorsForfait=0 %}
+   {% set FraisForfait=0 %}
+   
+   {% for frais in lesFraisForfait %}
+       {% set FraisForfait = FraisForfait + (frais.forfaitEtape*frais.fraisforfait.montantForfait) + (frais.fraisKilometrique*frais.fraisforfait.montantFraisKilometrique)
+           + (frais.nuiteeHotel*frais.fraisforfait.montantNuitee) + (frais.repasRestaurant*frais.fraisforfait.montantRepas) %}
+       
+   {% for fh in lesHForfait %}
+       {% set FraisHorsForfait = FraisHorsForfait + fh.montant %}  
+   {% endfor %}
+   {% endfor %}
+    Montant validé : {{FraisForfait + FraisHorsForfait}} €
+    <br><br>
+    <small>Si la fiche est vide</small>
+    <br>
+    <a href="{{ path('gsb_annulerFicheFrais',{'id':fiche.id})}}"><button>Annuler la fiche</button></a>
+    
+    {% endfor %}        
+{% endblock %}

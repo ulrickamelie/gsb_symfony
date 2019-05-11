@@ -1,0 +1,33 @@
+{% extends '@gsb/Default/entete.html.twig' %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block droite %}
+    <h1>Frais Forfait</h1>
+{% for FraisForfait in lesFraisForfait %}
+    Repas Restaurant : {{FraisForfait.repasRestaurant}} <br>
+    Nuitée Hôtel : {{FraisForfait.nuiteeHotel}} <br>
+    Frais Kilométrique : {{FraisForfait.fraisKilometrique}} <br>
+    Forfait Etape : {{FraisForfait.forfaitEtape}} <br>
+    <a href="{{ path('gsb_modifierFraisForfait', {'id':FraisForfait.id}) }}">Modifier</a> &nbsp &nbsp
+    <a href="{{ path('gsb_annulerFraisForfait', {'id':FraisForfait.id}) }}">Annuler</a>
+{% endfor %} 
+
+<br><br><br>
+<h1>Frais Hors Forfait</h1>
+{% for HForfait in lesHForfait %}
+    Libelle : {{HForfait.libelle}} <br>
+    Date (aaaa/mm/jj) : {{HForfait.date|date('Y-m-d')}} <br>
+    Montant : {{HForfait.montant}} <br>
+    <a href="{{ path('gsb_modifierFraisHorsForfait', {'id':HForfait.id}) }}">Modifier</a> &nbsp &nbsp
+    <a href="{{ path('gsb_annulerFraisHorsForfait', {'id':HForfait.id}) }}">Annuler</a> <br>
+{% endfor %}
+
+
+{% endblock %}
